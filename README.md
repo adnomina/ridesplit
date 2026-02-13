@@ -21,7 +21,7 @@ RideSplit automates the tedious process of tracking who drives how much and spli
 - TypeScript
 - Tailwind CSS
 - Database (Supabase)
-- PWA (next-pwa)
+- [PWA](https://nextjs.org/docs/app/guides/progressive-web-apps)
 
 ## Work Packets
 
