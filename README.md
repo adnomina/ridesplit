@@ -1,40 +1,68 @@
-# ridesplit
+# RideSplit
 
-A digital driver's log for people who share a car.
+A digital driver's log for people who share a car. Track mileage, split fuel costs fairly, and say goodbye to manual calculations.
+
+## About
+
+RideSplit automates the tedious process of tracking who drives how much and splitting fuel costs proportionally. Inspired by real-life shared car usage where you manually log mileage in a notebook and calculate costs via WhatsApp messages.
+
+## MVP Features
+
+- **Driver Selection** - Choose your name from a dropdown
+- **Mileage Logging** - Record odometer reading after each drive
+- **Automatic Calculation** - App calculates distance driven automatically
+- **Fuel Cost Split** - Enter fuel details, get instant cost breakdown per driver
+- **Data Persistence** - All data saved to database, accessible from any device
+- **PWA Support** - Install on mobile, works offline
 
 ## Tech Stack
 
-This is a [Next.js](https://nextjs.org) project with TypeScript and Tailwind CSS, bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- Database (Supabase)
+- PWA (next-pwa)
 
-## Getting Started
+## Work Packets
 
-First, run the development server:
+### **Packet 1: Project Setup & Foundation**
+- Initialize Next.js 16 with App Router and TypeScript
+- Configure Tailwind CSS
+- Set up database connection
+- Create basic project structure and layout
+- Configure PWA basics (next-pwa)
+- Deploy initial version
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### **Packet 2: Driver Management**
+- Create `drivers` table
+- API route: GET /api/drivers
+- Seed with initial family member names
+- (Optional: POST /api/drivers for adding drivers via UI)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Packet 3: Mileage Logging Feature**
+- Create `trips` table (id, driver_name, mileage, distance, timestamp, is_active)
+- API routes: POST /api/trips, GET /api/trips
+- UI: Driver dropdown + mileage input form
+- UI: Display recent trips list with calculated distances
+- Validation: mileage must be >= previous
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Packet 4: Fuel Cost Split Feature**
+- Create `fuel_purchases` table
+- API route: POST /api/fuel-purchases (create purchase + calculate splits)
+- API route: POST /api/reset (mark trips inactive, reset state)
+- UI: Fuel purchase form (price/liter, liters)
+- UI: Cost breakdown summary (who owes what)
+- UI: Confirmation dialog + reset functionality
 
-## Learn More
+### **Packet 5: PWA Enhancement**
+- Create app manifest.json and icons
+- Configure service worker caching strategies
+- Add install prompt
+- Test offline mode
+- Optimize for mobile
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **Packet 6: Polish & Nice-to-Haves**
+- Improve form validation and error messages
+- Add loading states and empty states
+- Cross-browser and mobile testing
+- Documentation and README updates
